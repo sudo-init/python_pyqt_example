@@ -13,7 +13,7 @@ def window():
     form_layout = QFormLayout()  # edit lables을 담을 form layout
     
     edit_label = QLineEdit()              # 문자열 편집이 가능한 edit label
-    edit_label.returnPressed.connect(returnTest) # Enter를 눌렀을 때의 동작
+    edit_label.returnPressed.connect(lambda: returnTest(edit_label)) # Enter를 눌렀을 때의 동작
     form_layout.addRow('Text', edit_label)       # form layout에 추가
     
     id_label = QLineEdit()
@@ -45,11 +45,12 @@ def window():
     
     app.exec()
 
-def returnTest(text):
+def returnTest(label:QLineEdit):
     """
         enter를 눌렀을 때 필요한 동작을 정의한 함수
     """
     print('Enter pressed!')
+    print(label.text())
 
 
 if __name__ == '__main__':
